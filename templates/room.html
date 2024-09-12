@@ -1,0 +1,126 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Remainder</title>
+
+    <style>
+        body{
+            font-family: "Arial" sans-serif;
+            background-color: #eaeaea;
+            padding: ipx 20px 20px 20px;
+            border-radius:5px;
+            box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+        }
+        label,
+        input,
+        button {
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        input {
+            width: 100%
+            
+        }
+        table{
+            width: 100%;
+        }
+        th{
+            background-color: #4caf50;
+            color: white;
+        }
+        button{
+            background-color: #4caf50;
+            color:white;
+            padding:5px;
+            border: none;
+        }
+        button:hover{
+            background-color: #45a049;
+        }
+        
+        
+    </style>
+    <body>
+    <div style="background-color:antiquewhite;">
+       <div class="container" style="padding:150px">
+          <h2 style="text-align: center"><b>Remainder app</b></h2>
+          
+           <label for="">Title :</label>
+           <input type="text" id="title"/>
+            <label for="">Description :</label>
+            <input type="text" id="Description" />
+            <label for="">Date :</label>
+            <input type="date" id="date" />
+            <label for="">Time :</label>
+           <input type="text" id="time" />
+
+           <button style="width: 100%" onclick="scheduleRemainder('Iam here')">
+             Schedule Remainder
+           </button>
+           <table border="1">
+              <thead>
+                 <tr>
+                     <th>TItle</th>
+                     <th>Description</th>
+                     <th>Date & Time</th>
+                     <th>Action</th>
+                   </tr>
+               </thead>
+                <tbody  id="reminderTableBody"></tbody>
+           </table>
+          
+       </div>
+       
+
+       <audio src="notificationsoundeffect.mp3" id="notificationsound">|</audio>
+       <script>
+         
+            
+             var timeoutIds = [];
+             function scheduleRemainder(){
+                var title = Document.getElementById("title").value;
+                var Description = Document.getElementById("description").value;
+                var date = Document.getElementById("date").value;
+                var time = Document.getElementById("time").value;
+            
+                var dateTimerString = date + ' ' + time;
+                var scheduleTime = new Date(dataTimeString);
+                var currentTime = new Date();
+                 var timeDifference = scheduleTime - currentTime;
+
+              if(timeDifference > 0){
+                   addRemainder(title, description , dataTimerString);
+
+                     var timeoutId = setTimeout(function (){
+                          document.getElementById("notificationSound").play();
+
+                          var notification = new Notification(title, {
+                          body: description,
+                          requireInteraction: true,
+                          });
+                        },  timeDifference);
+            
+                    timeoutIds.push(timeoutId);
+               } else {
+                  alert("The scheduled time is in the past!");
+               }
+            }
+           function deleteRemainder(button){
+              var row = button.closet("tr");
+              var index = row.rowIndex;
+
+              clearTimeout(timeoutIds[index - 1]);
+               timeoutIds.splice(index - 1, 1);
+
+                row.remove();
+            }
+        </script>
+    </div>
+   </body>
+</html>
+{% endblock%}

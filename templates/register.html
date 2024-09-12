@@ -1,0 +1,63 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block content %}
+<div class="chand">
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div id="demo" class="carousel slide"data-bs-ride="carousel">
+          <div class="carousel-indicators">
+              <button class="active"data-bs-target="#demo" data-bs-slide-to="0"></button>
+              <button data-bs-target="#demo" data-bs-slide-to="1"></button>
+              <button data-bs-target="#demo" data-bs-slide-to="2"></button>
+          </div>
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+              <img src="{% static 'reg1.webp' %}" class="img img-fluid d-block w-100 mt-5" alt=""></div>
+              <div class="carousel-item ">
+                  <img src="{% static 'reg2.jpg' %}" class="img img-fluid d-block w-100 mt-5" alt=""></div>
+                  <div class="carousel-item ">
+                      <img src="{% static 'reg3.jpg' %}" class="img img-fluid d-block w-100 mt-5" alt=""></div>
+          </div>
+      </div>  
+      </div>
+      <div class="col-sm-6 ">
+         <h1>Register Now</h1>
+         <span>{{msg}}</span>
+         <form action="/doregister" method=""class="alert alert-alert">
+             <div class="mb-3">
+              <input name="fullname" id="fullnameid"placeholder="Enter Full Name" class="form-control border-3 border-black alert alert-info "type="text" required>
+                    
+             </div>
+             <div class="mb-3">
+              <input name="email" id="emailid"placeholder="Enter Email" class="form-control border-3 border-black alert alert-info"type="text" required>
+
+             </div>
+             <div class="mb-3">
+              <input name="phone" id="mbid"placeholder="Enter Mobile Number" class="form-control border-3 border-black alert alert-info"type="text" required>
+
+             </div>
+             <div class="mb-3">
+              <input name="password" id="mbid"placeholder="Enter Password" class="form-control border-3 border-black alert alert-info"type="password" required>
+
+             </div>
+             
+             
+             
+             <div class="mb-2">
+              <button class="btn btn-success" type="Submit">Register</button>
+              <button class="btn btn-primary"type="reset">Reset</button>
+             </div>
+          </form>
+       </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .chand{
+      background-image: url("{% static 'li.png'%}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+{% endblock %}

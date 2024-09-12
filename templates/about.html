@@ -1,0 +1,90 @@
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+   <div style="background-color: white;">
+    <h1 class="text-center"><b>About Us</b></h1>
+    <h3><i>Introduction to Task Remainder :</i></h3>
+    <img style="width:80px; float:right;" src="{% static 'bigicon.webp' %}" >
+    <p > Welcome to Task Remainder, your personal assistant for efficient task management and productivity enhancement. In today's fast-paced world, staying organized and on top of your tasks can be challenging. That's why we've developed Task Remainder—to simplify your life by ensuring you never miss an important task again.</p>
+  <p class="mb-3">Whether you're managing work projects, household chores, or personal goals, Task Remainder is here to help. Our app provides intuitive features designed to streamline task creation, prioritize activities, and remind you at just the right moment, so you can focus on what matters most.</p>
+  <img style="width:80px; float:left;"src="{% static 'bigicon.webp' %}" alt="">
+  <p>Join thousands of users who have already discovered the power of Task Remainder in optimizing their daily routines and achieving more with less effort. Let Task Remainder be your trusted companion in conquering your to-do list and staying ahead of deadlines effortlessly.</p> 
+<p>Download Task Remainder today and experience a new level of productivity and organization. Simplify your tasks, amplify your productivity—only with Task Remainder.</p>  
+<h3><i>Features :</i></h3>
+<p><b>Task Creation :</b></p>
+<p class="p-3">Easily create tasks with titles, descriptions, due dates, and optional reminders.</p>
+<mark>1.Simple Input: </mark>
+<img src="{% static 'input.png'%}" alt="" style="width:4em;">
+<p>The task creation feature in our Task Reminder application is designed to be intuitive and efficient, helping users quickly capture and organize their tasks. Whether you're managing work assignments, personal goals, or household chores, creating and managing tasks has never been easier.</p>
+<p>Users can effortlessly input task details such as title, description, due date, and optional notes or attachments. The interface is streamlined to minimize effort and maximize productivity.</p>
+</div>
+<div  class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="chandrika">
+      <p class="text-center"> <b><u ><i >Remainder</i></u> </b></p>
+       <p class="text-center"><b  > You're Allowes to be <br>Both a Masterpiece <br>and a Work in <br> Progress <br> Simultaneously <br></b></p>
+      </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
+<div style="background-color: white;">
+<mark>2.Remainder Notifications : </mark>
+  <img src="{% static 'bell.webp'%}" alt="" style="width: 4em;">
+
+<p> Assign priorities to tasks (e.g., high, medium, low) to focus on what's most important.
+  
+</p>
+<mark>3.Priority Settings :</mark>
+<img src="{% static 'priority.png'%}" alt="" style="width: 4em;">
+
+<p>Assign priorities to tasks (e.g., high, medium, low) to focus on what's most important.</p>
+<mark>4.Task Categories : </mark>
+<img src="{% static 'task.png'%}" alt="" style="width: 3em;">
+
+<p>Organize tasks into categories or lists (e.g., work, personal, groceries) for better management.
+
+</p>
+<mark>5.Recurring Tasks :</mark>
+<img src="{% static 'recurring.jpeg'%}" alt="" style="width: 3em;">
+
+<p>Set tasks to repeat daily, weekly, monthly, or custom intervals for recurring activities.</p>
+<mark>6.Notes and Attachments :</mark>
+<img src="{% static 'notes.png'%}" alt="" style="width: 3em;">
+
+<p>Add notes, comments, or attachments to tasks for additional details or references.</p>
+<mark>7.Sync Across Devices :</mark>
+
+<img src="{% static 'sync.avif'%}" alt="" style="width: 4em;">
+
+<p>Access and manage tasks from multiple devices (e.g., smartphone, tablet, web) with automatic synchronization.
+
+</p>
+<mark>8.Customizable Reminders : </mark>
+
+<img src="{% static 'customized.png'%}" alt="" style="width: 3em;">
+<p> Customize reminder settings such as notification sound, repeat frequency, and snooze options.
+
+</p>
+<mark>9.Search and Filter: </mark>
+<img src="{% static 'search.webp'%}" alt="" style="width: 3em;">
+
+<p>Easily find tasks using search functionality or filter tasks by due date, priority, or category.
+
+</p>
+<mark>10.User-friendly Interface: </mark>
+<img src="{% static 'user.png'%}" alt="" style="width: 4em;">
+
+<p>Enjoy a clean and intuitive interface designed for quick task entry and effortless navigation.</p>
+</div>
+<style>
+  .col-sm-6 .chandrika{
+    background-image:url("{% static 'nice.avif'%}");
+    width:100%;
+  }
+</style>
+{% endblock %}
+
+

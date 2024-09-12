@@ -1,0 +1,162 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        button.delete {
+            background-color: #dc3545;
+        }
+        button.delete:hover {
+            background-color: #c82333;
+        }
+        .timer {
+            font-size: 0.9em;
+            color: #555;
+            margin-left: 20px;
+            min-width: 80px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Reminder App with Hours and Minutes Timer</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Enter a new task" required>
+            <input type="number" id="task-hours" placeholder="Hours" min="0" required>
+            <input type="number" id="task-minutes" placeholder="Minutes" min="0" max="59" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <ul id="task-list"></ul>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskForm = document.getElementById('task-form');
+            const taskInput = document.getElementById('task-input');
+            const taskHours = document.getElementById('task-hours');
+            const taskMinutes = document.getElementById('task-minutes');
+            const taskList = document.getElementById('task-list');
+
+            taskForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const taskValue = taskInput.value.trim();
+                const hoursValue = parseInt(taskHours.value, 10);
+                const minutesValue = parseInt(taskMinutes.value, 10);
+
+                if (taskValue && hoursValue >= 0 && minutesValue >= 0) {
+                    addTask(taskValue, hoursValue, minutesValue);
+                    taskInput.value = '';
+                    taskHours.value = '';
+                    taskMinutes.value = '';
+                }
+            });
+
+            function addTask(task, hours, minutes) {
+                const li = document.createElement('li');
+                li.textContent = task;
+
+                const timerDisplay = document.createElement('span');
+                timerDisplay.className = 'timer';
+                li.appendChild(timerDisplay);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = 'delete';
+                deleteButton.addEventListener('click', function() {
+                    clearInterval(li.timerInterval); // Clear timer interval
+                    li.remove();
+                });
+
+                li.appendChild(deleteButton);
+                taskList.appendChild(li);
+
+                // Set up timer
+                const endTime = Date.now() + ((hours * 60 + minutes) * 60 * 1000); // Convert hours and minutes to milliseconds
+
+                function updateTimer() {
+                    const now = Date.now();
+                    const timeLeft = endTime - now;
+
+                    if (timeLeft <= 0) {
+                        alert(`Time's up for task: ${task}`);
+                        clearInterval(li.timerInterval);
+                        li.remove();
+                    } else {
+                        const totalMinutes = Math.floor(timeLeft / (60 * 1000));
+                        const hoursLeft = Math.floor(totalMinutes / 60);
+                        const minutesLeft = totalMinutes % 60;
+                        const secondsLeft = Math.floor((timeLeft % (60 * 1000)) / 1000);
+                        timerDisplay.textContent = `${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
+                    }
+                }
+
+                updateTimer(); // Initial call to set the timer display
+                li.timerInterval = setInterval(updateTimer, 1000); // Update every second
+            }
+        });
+    </script>
+</body>
+</html>

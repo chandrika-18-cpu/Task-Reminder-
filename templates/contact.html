@@ -1,0 +1,70 @@
+{% extends "index.html"%}
+{% load static %}
+{% block content %}
+<div style="background-color:rgb(128, 128, 128); color:white;">
+<h1 class="text-center">Contact Us</h1>
+<h3 style="padding-left:150px;">We'd love to get in touch and learn more about us and our business needs</h3>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-3">
+                <img   class=" rounded-circle"style="width:7em;"src="{% static 'home.png' %}" alt="">
+                
+              </div>
+              <div class="col-sm-3" style="color:black;">
+                <h3><u>Address</u></h3>
+                <p> Gangavaram road ,kovur(m),Nellore(Dist)</p>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                  <img   class=" rounded-circle"style="width:7em;"src="{% static 'phone.webp' %}" alt="">
+                  
+                </div>
+                <div class="col-sm-3" style="color:black;">
+                  <h3><u>Whatsapp</u></h3>
+                  <a href="https://wa.me/919652318072" style="color:black;">Whatsapp</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <img   class=" rounded-circle"style="width:6em;"src="{% static 'mail.webp' %}" alt="">
+                  
+                </div>
+                <div class="col-sm-3" style="color:black;">
+                 <h3><u>E-mail</u></h3>
+                  <a style="color:black;" href="mailto:chchandrika0916@gmail.com"> Mail to this</a>
+                </div>
+              </div>     
+        </div>  
+        <div class="col-sm-6  contact-container">
+          <div style="background-color:white;box-shadow:gray; color:black;width:100%; ">
+            <h1 style="margin-left:5px;">send meassage</h1>
+            <form  id="c2"action="https://api.web3forms.com/submit" method="POST" class="contact-container">                
+              <input  type="hidden" name="access_key" value="a580f891-d01c-4e2f-8a07-51deca9f0921">                 
+              <input class="form-control mb-3" name="fullname" placeholder="Fullname" required>
+              <input class="form-control mb-3" name="email" placeholder="E-mail" required>
+              <div>
+              <input class="form-control mb-3" name="text" placeholder="Type your message" required>         
+                      
+                <input  class="form-control mb-3 alert bg-info" type="submit" placeholder="Submit">                                     
+            </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    .col-sm-6 input{
+        border: none;
+        outline: none;
+        border-bottom: 1px solid black;
+        width:97%;
+        padding: 10px;
+        margin: 10px;
+        padding-right: 30%;       
+    }
+</style>
+{% endblock %}

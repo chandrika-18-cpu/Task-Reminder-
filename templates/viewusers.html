@@ -1,0 +1,52 @@
+{% extends "adminlayout.html" %}
+{% load static %}
+{% block content%}
+<div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-sm-12 overflow-scroll">
+            <h1 class="text-center alert bg-primary mt-3">User data</h1>
+            <table class="table">
+                <thead>
+                    <th>FullName</th>
+                    <th>E-mail</th>
+                    <th>Password</th>
+                    <th>Phone</th>
+                    <th>Designation</th>
+                </thead>
+                {% for user in users %} 
+                <tr>
+                   <form action="/modify">
+                        <td>
+                            <input type="text" name="fullname" value="{{user.fullname}}">
+                             
+                        </td>
+                         <td>
+                            <input type="text" name="email" value="{{user.email}}">
+                        </td>
+                        <td>
+                            <input type="text" name="password" value="{{user.password}}">
+                        </td>
+                        <td>
+                            <input type="text" name="phone" value="{{user.phone}}">
+                        </td>
+                        <td>
+                            <input type="text" name="desig" value="{{user.desig}}">
+                        </td>
+                    <td>
+                        <button style="color: white;" class="alert  bg-primary "  value="update" name="operation" type="submit" >update</button>
+                    
+                    </td>
+                    <td>
+                        <button style="color: white;"  class="alert bg-danger "  value="delete" name="operation" type="submit" >delete</button>
+                    
+                    </td>
+                </form>
+            </tr>
+                
+                {% endfor %}
+            </table>
+    </div>
+    </div>
+</div>
+{% endblock%}
